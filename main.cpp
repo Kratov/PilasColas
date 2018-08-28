@@ -5,10 +5,12 @@
 
 using namespace std;
 
+const int MAX_LENGTH = 30;
+
 struct Datos
 {
-	char nombre[30];
-	char apellido[30];
+	char nombre[MAX_LENGTH];
+	char apellido[MAX_LENGTH];
 	int edad;
 	void imprimir() 
 	{
@@ -128,19 +130,19 @@ struct Cola {
 	}
 };
 
-int menuPrincipal() 
+char menuPrincipal() 
 {
-	int sel = 0;
-	printf("\nPILAS Y COLAS\n	1.Insertar\n	2.Eliminar\n	3.Recorrer\n	Seleccion: ");
-	scanf("%d", &sel);
+	char sel = 'S';
+	printf("\nPILAS Y COLAS\n	1.Insertar\n	2.Eliminar\n	3.Recorrer\n	S.Salir\n	Seleccion: ");
+	scanf(" %c", &sel);
 	return sel;
 }
 
-int menuColaPila() 
+char menuColaPila() 
 {
-	int sel = 0;
+	char sel = 'S';
 	printf("\nAplicar a:\n	1.Pila\n	2.Cola\n	Seleccion: ");
-	scanf("%d", &sel);
+	scanf(" %c", &sel);
 	return sel;
 }
 
@@ -148,20 +150,21 @@ int main() {
 	Pila pila;
 	Cola cola;
 	Datos dat;
-	int opc = 0;
+	char opc = 'S';
 	do {
+		system("CLS");
 		switch (opc = menuPrincipal())
 		{
-			case 1: 
+			case '1': 
 				switch (menuColaPila())
 				{
-					case 1:
+					case '1':
 						{
 							Datos temp;
 							pila.insertar(temp.pedirDatos());
 						}
 						break;
-					case 2: 
+					case '2': 
 						{
 							Datos temp;
 							cola.insertar(temp.pedirDatos());
@@ -169,28 +172,29 @@ int main() {
 						break;
 				}
 				break;
-			case 2:
+			case '2':
 				switch (menuColaPila())
 				{
-					case 1:
+					case '1':
 						pila.eliminar(dat);
 						break;
-					case 2:
+					case '2':
 						cola.eliminar(dat);
 						break;
 				}
 				break;
-			case 3:
+			case '3':
 				switch (menuColaPila())
 				{
-					case 1:
+					case '1':
 						pila.mostrar();
 						break;
-					case 2:
+					case '2':
 						cola.mostrar();
 						break;
 				}
+				system("PAUSE");
 				break;
 		}
-	} while (opc != 0);
+	} while (opc != 'S');
 }
