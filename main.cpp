@@ -182,6 +182,8 @@ int main() {
 						cola.eliminar(dat);
 						break;
 				}
+				printf("\nEliminado: ");
+				dat.imprimir();
 				break;
 			case '3':
 				switch (menuColaPila())
@@ -193,8 +195,8 @@ int main() {
 						cola.mostrar();
 						break;
 				}
-				system("PAUSE");
 				break;
 		}
+		system("PAUSE");
 	} while (opc != 'S');
 }
